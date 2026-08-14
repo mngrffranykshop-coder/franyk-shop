@@ -94,6 +94,62 @@
         </div>
     </main>
 
+    <!-- ТОВАР 4 (Ніж) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Unique</span>
+                        <img src="https://i.postimg.cc/ZK1JVx02/Wand-Full-HD.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Heartwand</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
+                        <span class="text-xl font-black text-blue-400">450 ₴</span>
+                        <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Heartwand', 450)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+    <!-- ТОВАР 5 (Пістолет) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" style="display: none;">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Godly</span>
+                        <img src="https://i.postimg.cc/d3CJYhxx/Laser-Updated.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Laser</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
+                        <span class="text-xl font-black text-blue-400">45 ₴</span>
+                        <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Laser', 45)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+    <!-- ТОВАР 6 (Сет) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" style="display: none;">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
+                        <img src="https://i.postimg.cc/3N5P2nt1/7b2f1e63df2ce67430c5179d1a62c427.png" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Beach Set</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
+                        <span class="text-xl font-black text-blue-400">500 ₴</span>
+                        <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Beach Set', 500)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+        </div>
+</main>
     <!-- НИЖНЯ ПАНЕЛЬ КОШИКА (ЗАВЖДИ ВНИЗУ) -->
     <div id="cart-panel" class="fixed bottom-0 left-0 w-full bg-gray-950/95 border-t border-blue-900/40 p-4 shadow-2xl backdrop-blur-md z-50">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
