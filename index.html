@@ -34,7 +34,7 @@
             <button onclick="filterCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">📦 Сети</button>
         </div>
 
-        <!-- КАТАЛОГ ТОВАРІВ -->
+        <!-- КАТАЛОГ ТОВАРІВ (Усі товари тепер всередині однієї сітки) -->
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
             
             <!-- ТОВАР 1 (Ніж) -->
@@ -91,10 +91,7 @@
                 </div>
             </div>
 
-        </div>
-    </main>
-
-    <!-- ТОВАР 4 (Ніж) -->
+            <!-- ТОВАР 4 (Ніж) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -112,7 +109,7 @@
                 </div>
             </div>
 
-    <!-- ТОВАР 5 (Пістолет) -->
+            <!-- ТОВАР 5 (Пістолет) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" style="display: none;">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -130,7 +127,7 @@
                 </div>
             </div>
 
-    <!-- ТОВАР 6 (Сет) -->
+            <!-- ТОВАР 6 (Сет) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" style="display: none;">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -149,7 +146,8 @@
             </div>
 
         </div>
-</main>
+    </main>
+
     <!-- НИЖНЯ ПАНЕЛЬ КОШИКА (ЗАВЖДИ ВНИЗУ) -->
     <div id="cart-panel" class="fixed bottom-0 left-0 w-full bg-gray-950/95 border-t border-blue-900/40 p-4 shadow-2xl backdrop-blur-md z-50">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
