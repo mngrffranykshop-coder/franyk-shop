@@ -205,7 +205,7 @@
                 </div>
                 <div>
                     <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
-                        <span class="product-price text-xl font-black text-blue-400">175 ₴</span>
+                        <span class="product-price text-xl font-black text-blue-400">0 ₴</span>
                         <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
                     </div>
                     <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
@@ -224,7 +224,7 @@
             </div>
             <div class="flex gap-2 w-full sm:w-auto">
                 <button onclick="clearCart()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition">Очистити</button>
-                <a href="https://t.me/ffranyk" target="_blank" class="flex-grow sm:flex-grow-0 bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-xl font-bold text-xs text-center transition shadow-lg">Замовити в TG</a>
+                <a id="tg-checkout-btn" href="https://t.me/ffranyk" target="_blank" class="flex-grow sm:flex-grow-0 bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-xl font-bold text-xs text-center transition shadow-lg pointer-events-none opacity-50">Замовити в TG</a>
             </div>
         </div>
     </div>
@@ -253,6 +253,23 @@
             let total = cart.reduce((sum, item) => sum + item.price, 0);
             document.getElementById('cart-items').innerText = cart.length;
             document.getElementById('cart-total').innerText = total;
+
+            const tgBtn = document.getElementById('tg-checkout-btn');
+
+            if (cart.length === 0) {
+                tgBtn.href = "https://t.me/ffranyk";
+                tgBtn.classList.add('pointer-events-none', 'opacity-50');
+            } else {
+                tgBtn.classList.remove('pointer-events-none', 'opacity-50');
+                
+                let message = "Привіт! Хочу купити такі товари з сайту:\n\n";
+                cart.forEach((item, index) => {
+                    message += `${index + 1}. ${item.name} — ${item.price} ₴\n`;
+                });
+                message += `\nЗагальна сума: ${total} ₴`;
+
+                tgBtn.href = `https://t.me/ffranyk?text=${encodeURIComponent(message)}`;
+            }
         }
 
         function setCategory(category) {
@@ -260,44 +277,4 @@
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white');
-                btn.classList.add('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
-            });
-            document.getElementById('btn-' + category).classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
-            document.getElementById('btn-' + category).classList.add('bg-blue-600', 'text-white');
-            applyFilters();
-        }
-
-        function applyFilters() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const sortOrder = document.getElementById('sort-select').value;
-            const grid = document.getElementById('product-grid');
-            let cards = Array.from(grid.querySelectorAll('.product-card'));
-
-            cards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                const name = card.querySelector('.product-name').innerText.toLowerCase();
-                
-                const matchesCategory = (category === currentCategory);
-                const matchesSearch = name.includes(searchQuery);
-
-                if (matchesCategory && matchesSearch) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (sortOrder !== 'default') {
-                cards.sort((a, b) => {
-                    let priceA = parseFloat(a.querySelector('.product-price').innerText);
-                    let priceB = parseFloat(b.querySelector('.product-price').innerText);
-                    return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
-                });
-                cards.forEach(card => grid.appendChild(card));
-            }
-        }
-
-        setCategory('knife');
-    </script>
-</body>
-</html>
+                btn.classList.add('bg-gray-900', 'text-gray-300', 'bo
