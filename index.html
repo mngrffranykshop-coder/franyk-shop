@@ -12,7 +12,7 @@
         body { background-color: #030712; color: #f3f4f6; font-family: system-ui, -apple-system, sans-serif; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-blue-600 selection:text-white pb-28">
+<body class="min-h-screen flex flex-col selection:bg-blue-600 selection:text-white pb-36">
 
     <header class="border-b border-blue-900/40 bg-gray-950/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -27,20 +27,22 @@
             <p class="text-sm text-gray-400">Обирай категорію нижче, щоб знайти потрібну гармату чи ніж.</p>
         </div>
 
+        <!-- КНОПКИ ФІЛЬТРІВ -->
         <div class="flex justify-center flex-wrap gap-2">
-            <button onclick="filterCategory('knife')" id="btn-knife" class="category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition"> Ножі</button>
-            <button onclick="filterCategory('gun')" id="btn-gun" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition"> Пістолети</button>
-            <button onclick="filterCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition"> Сети</button>
+            <button onclick="filterCategory('knife')" id="btn-knife" class="category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition">🔪 Ножі</button>
+            <button onclick="filterCategory('gun')" id="btn-gun" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">🔫 Пістолети</button>
+            <button onclick="filterCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">📦 Сети</button>
         </div>
 
+        <!-- КАТАЛОГ ТОВАРІВ -->
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
             
-            <!-- КАРТКА 1 -->
+            <!-- ТОВАР 1 (Ніж) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Unique</span>
-                        <img src="https://https://i.postimg.cc/Ls16mZfd/Corrupt-Weapon.webp" class="w-full h-full object-cover">
+                        <img src="https://i.postimg.cc/Ls16mZfd/Corrupt-Weapon.webp" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1">Corrupt</h3>
                 </div>
@@ -49,52 +51,81 @@
                         <span class="text-xl font-black text-blue-400">500 ₴</span>
                         <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
                     </div>
-                    <button onclick="addToCart(500)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Corrupt', 500)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
-            <!-- КАРТКА 2 (Шаблон для нових товарів: міняй ціну у addToCart) -->
-            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife" style="display: none;">
+            <!-- ТОВАР 2 (Пістолет) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" style="display: none;">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Godly</span>
-                        <img src="ПОСИЛАННЯ_НА_ФОТО" class="w-full h-full object-cover">
+                        <img src="https://i.postimg.cc/X75rVm0m/Raygun.webp" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-bold text-lg text-white mb-1">НАЗВА</h3>
+                    <h3 class="font-bold text-lg text-white mb-1">Raygun</h3>
                 </div>
                 <div>
                     <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
-                        <span class="text-xl font-black text-blue-400">ЦІНА ₴</span>
+                        <span class="text-xl font-black text-blue-400">2300 ₴</span>
                         <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
                     </div>
-                    <button onclick="addToCart(ЦІНА)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Raygun', 2300)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 3 (Сет) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" style="display: none;">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
+                        <img src="https://i.postimg.cc/CKcHV5y8/Bloom-Set.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Flora Set</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-3 mb-3 border-t border-gray-800">
+                        <span class="text-xl font-black text-blue-400">900 ₴</span>
+                        <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Flora Set', 900)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- НИЖНЯ ПАНЕЛЬ КОШИКА -->
-    <div id="cart-panel" class="fixed bottom-0 left-0 w-full bg-gray-950/95 border-t border-blue-900/40 p-4 shadow-2xl backdrop-blur-md hidden z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
+    <!-- НИЖНЯ ПАНЕЛЬ КОШИКА (ЗАВЖДИ ВНИЗУ) -->
+    <div id="cart-panel" class="fixed bottom-0 left-0 w-full bg-gray-950/95 border-t border-blue-900/40 p-4 shadow-2xl backdrop-blur-md z-50">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
             <div>
                 <p class="text-xs text-gray-400">Обрано товарів: <span id="cart-items" class="text-white font-bold">0</span></p>
                 <p class="text-lg font-black">Сума: <span id="cart-total" class="text-blue-400">0</span> ₴</p>
             </div>
-            <a href="https://t.me/ffranyk" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-sm transition shadow-lg">Замовити в TG</a>
+            <div class="flex gap-2 w-full sm:w-auto">
+                <button onclick="clearCart()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition">Очистити</button>
+                <a href="https://t.me/ffranyk" target="_blank" class="flex-grow sm:flex-grow-0 bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-xl font-bold text-xs text-center transition shadow-lg">Замовити в TG</a>
+            </div>
         </div>
     </div>
 
+    <!-- СКРИПТ ЛОГІКИ -->
     <script>
-        let count = 0;
-        let total = 0;
+        let cart = [];
 
-        function addToCart(price) {
-            count++;
-            total += price;
-            document.getElementById('cart-items').innerText = count;
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function updateCart() {
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-items').innerText = cart.length;
             document.getElementById('cart-total').innerText = total;
-            document.getElementById('cart-panel').style.display = 'block';
         }
 
         function filterCategory(category) {
@@ -108,10 +139,8 @@
             document.getElementById('btn-' + category).classList.add('bg-blue-600', 'text-white');
             cards.forEach(card => card.style.display = (card.getAttribute('data-category') === category) ? 'flex' : 'none');
         }
-        
-        // Ініціалізація показу першої категорії
+
         filterCategory('knife');
     </script>
 </body>
 </html>
-
