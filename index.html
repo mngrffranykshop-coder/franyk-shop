@@ -1,130 +1,97 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Франик Шоп - Магазин MM2</title>
+    <title>Франик Шоп | MM2 Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d0f18; color: #f3f4f6; font-family: sans-serif; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3); border-color: #a855f7; }
-        button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        .neon-glow {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+        }
+        .neon-btn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
 
-    <!-- Хедер -->
-    <header class="bg-gray-900/95 border-b border-purple-900/50 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <span class="text-2xl font-black text-purple-400">⚡ Франик Шоп</span>
-            <span class="text-xs bg-purple-900/50 text-purple-300 px-3 py-1 rounded-full border border-purple-700/50">MM2 Shop 🇺🇦</span>
+    <!-- ХЕДЕР -->
+    <header class="border-b border-blue-900/40 bg-gray-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+                FRANYK<span class="text-blue-500">.SHOP</span>
+            </h1>
+            
+            <!-- КНОПКА ТЕЛЕГРАМ -->
+            <a href="https://t.me/@ffranyk" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs md:text-sm font-bold px-4 py-2 rounded-xl transition duration-300 neon-btn">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.119.098.152.228.163.331.011.103.024.336.008.519z"/></svg>
+                <span>Telegram</span>
+            </a>
         </div>
     </header>
 
-    <!-- Основна частина -->
-    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-        <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-5xl font-black mb-3">Магазин зброї MM2</h1>
-            <p class="text-gray-400 text-sm md:text-base">Найкращі ціни у гривнях. Швидка та безпечна передача предметів!</p>
+    <!-- ГОЛОВНИЙ БЛОК -->
+    <main class="max-w-4xl mx-auto px-4 py-6 flex-grow w-full">
+        
+        <!-- Блок привітання -->
+        <div class="mb-8 p-6 rounded-2xl bg-gradient-to-r from-blue-950/60 to-gray-900 border border-blue-800/40 neon-glow">
+            <h2 class="text-xl font-extrabold mb-2 text-white">Каталог товарів Франик Шопу</h2>
+            <p class="text-sm text-gray-400">Швидка видача, топові ціни та гарантія. Вибирай гармату чи ніж і лети до перемоги.</p>
         </div>
 
-        <!-- Кнопки фільтрів -->
-        <div class="flex justify-center space-x-2 mb-10 overflow-x-auto pb-2">
-            <button onclick="filterCategory('all', this)" class="cat-btn bg-purple-600 text-white px-5 py-2 rounded-xl font-semibold text-sm transition">Всі товари</button>
-            <button onclick="filterCategory('knife', this)" class="cat-btn bg-gray-800 text-gray-300 px-5 py-2 rounded-xl font-semibold text-sm transition">🔪 Ножі</button>
-            <button onclick="filterCategory('gun', this)" class="cat-btn bg-gray-800 text-gray-300 px-5 py-2 rounded-xl font-semibold text-sm transition">🔫 Пістолети</button>
-            <button onclick="filterCategory('set', this)" class="cat-btn bg-gray-800 text-gray-300 px-5 py-2 rounded-xl font-semibold text-sm transition">📦 Сети</button>
-        </div>
-
-        <!-- Каталог товарів -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="product-grid">
+        <!-- КАТАЛОГ ТОВАРІВ -->
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
             
-            <!-- Ніж 1 -->
-            <div class="product-card bg-gray-900/70 border border-gray-800 rounded-2xl p-4 flex flex-col justify-between card-hover transition" data-category="knife">
+            <!-- Товар 1: Raygun -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300">
                 <div>
-                    <div class="bg-gray-800/80 h-40 rounded-xl mb-4 flex items-center justify-center text-4xl relative">
-                        <span class="absolute top-2 left-2 bg-purple-600 text-[10px] font-bold px-2 py-1 rounded-md">Godly</span>
-                        🔪
+                    <div class="bg-blue-950/40 border border-blue-900/30 h-40 rounded-xl mb-4 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Godly</span>
+                        <span class="text-5xl">🔫</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-1">Corrupt</h3>
-                    <p class="text-xs text-gray-400 mb-4">Колекційний елітний ніж.</p>
+                    <h3 class="font-bold text-lg text-white mb-1">Raygun</h3>
+                    <p class="text-xs text-gray-400 mb-3">Інопланетна міць у твоїх руках.</p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                    <span class="text-xl font-black text-purple-400">149 ₴</span>
-                    <span class="text-xs bg-purple-900/40 text-purple-300 px-3 py-1.5 rounded-lg font-semibold">В наявності</span>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-800">
+                    <span class="text-xl font-black text-blue-400">2250 ₴</span>
+                    <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">Є в наявності</span>
                 </div>
             </div>
 
-            <!-- Пістолет 1 -->
-            <div class="product-card bg-gray-900/70 border border-gray-800 rounded-2xl p-4 flex flex-col justify-between card-hover transition" data-category="gun">
+            <!-- Товар 2: Corrupt -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300">
                 <div>
-                    <div class="bg-gray-800/80 h-40 rounded-xl mb-4 flex items-center justify-center text-4xl relative">
-                        <span class="absolute top-2 left-2 bg-indigo-600 text-[10px] font-bold px-2 py-1 rounded-md">Godly</span>
-                        🔫
+                    <div class="bg-blue-950/40 border border-blue-900/30 h-40 rounded-xl mb-4 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Ancient</span>
+                        <span class="text-5xl">🔪</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-1">Luger</h3>
-                    <p class="text-xs text-gray-400 mb-4">Популярний класичний пістолет.</p>
+                    <h3 class="font-bold text-lg text-white mb-1">Corrupt</h3>
+                    <p class="text-xs text-gray-400 mb-3">Легендарний заражений ніж.</p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                    <span class="text-xl font-black text-purple-400">115 ₴</span>
-                    <span class="text-xs bg-purple-900/40 text-purple-300 px-3 py-1.5 rounded-lg font-semibold">В наявності</span>
-                </div>
-            </div>
-
-            <!-- Сет 1 -->
-            <div class="product-card bg-gray-900/70 border border-gray-800 rounded-2xl p-4 flex flex-col justify-between card-hover transition" data-category="set">
-                <div>
-                    <div class="bg-gray-800/80 h-40 rounded-xl mb-4 flex items-center justify-center text-4xl relative">
-                        <span class="absolute top-2 left-2 bg-pink-600 text-[10px] font-bold px-2 py-1 rounded-md">Сет</span>
-                        📦
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">Icebreaker Set</h3>
-                    <p class="text-xs text-gray-400 mb-4">Комплект: ніж + пістолет.</p>
-                </div>
-                <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-                    <span class="text-xl font-black text-purple-400">220 ₴</span>
-                    <span class="text-xs bg-purple-900/40 text-purple-300 px-3 py-1.5 rounded-lg font-semibold">В наявності</span>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-800">
+                    <span class="text-xl font-black text-blue-400">600 ₴</span>
+                    <span class="text-[11px] bg-blue-950 text-blue-300 border border-blue-800/50 px-2.5 py-1 rounded-lg font-bold">Є в наявності</span>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Пряме посилання на Telegram у вигляді плаваючої кнопки -->
-    <a href="https://t.me/ffranyk" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[100] bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-2xl shadow-2xl shadow-purple-900/50 flex items-center space-x-2 border border-purple-400/35 transition-transform hover:scale-105 active:scale-95">
-        <span class="text-xl">💬</span>
-        <div>
-            <div class="text-[10px] text-purple-200 uppercase font-bold tracking-wider">Купити у Telegram</div>
-            <div class="text-sm font-black">@ffranyk</div>
-        </div>
-    </a>
-
-    <!-- Футер -->
-    <footer class="bg-gray-900 border-t border-purple-900/50 py-6 text-center text-xs text-gray-500">
-        Франик Шоп &copy; 2026. Усі права захищені.
+    <!-- ФУТЕР -->
+    <footer class="border-t border-blue-900/40 bg-gray-950 py-4 text-center text-xs text-gray-500">
+        Franyk Shop © 2026. Всі права захищені.
     </footer>
 
-    <!-- Скрипт -->
-    <script>
-        function filterCategory(category, clickedBtn) {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-purple-600', 'text-white');
-                btn.classList.add('bg-gray-800', 'text-gray-300');
-            });
-            
-            clickedBtn.classList.remove('bg-gray-800', 'text-gray-300');
-            clickedBtn.classList.add('bg-purple-600', 'text-white');
-
-            const cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
