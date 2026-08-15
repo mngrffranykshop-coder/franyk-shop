@@ -33,7 +33,6 @@
             <p class="text-sm text-gray-400">Обирай категорію нижче, шукай за назвою або сортуй за ціною.</p>
         </div>
 
-        <!-- ПАНЕЛЬ ПОШУКУ ТА СОРТУВАННЯ -->
         <div class="flex flex-col sm:flex-row gap-3">
             <div class="relative flex-grow">
                 <input type="text" id="search-input" oninput="filterProducts()" placeholder="Пошук гармати чи ножа..." class="w-full bg-gray-900 border border-gray-800 text-white text-xs md:text-sm rounded-xl px-4 py-3 pl-10 focus:outline-none focus:border-blue-500 transition">
@@ -46,18 +45,14 @@
             </select>
         </div>
 
-        <!-- КНОПКИ ФІЛЬТРІВ -->
         <div class="flex justify-center flex-wrap gap-2">
             <button onclick="switchCategory('knife')" id="btn-knife" class="category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition">🔪 Ножі</button>
             <button onclick="switchCategory('gun')" id="btn-gun" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">🔫 Пістолети</button>
             <button onclick="switchCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">📦 Сети</button>
         </div>
 
-        <!-- КАТАЛОГ ТОВАРІВ -->
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            
-            <!-- НОЖІ (knife) -->
-            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife" data-price="500">
+                        <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife" data-price="500">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Unique</span>
@@ -91,7 +86,6 @@
                 </div>
             </div>
 
-            <!-- ПІСТОЛЕТИ (gun) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" data-price="2300">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -109,7 +103,6 @@
                 </div>
             </div>
 
-            <!-- СЕТИ (set) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="900">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -131,7 +124,7 @@
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
-                        <img src="https://https://i.postimg.cc/QNFzMGdV/7cc9e1edb0b1a9728dc5530fabdcf517Swirly-Set.png" class="w-full h-full object-cover">
+                        <img src="https://i.postimg.cc/XNrPvSY5/Elderwood-Set.webp" class="w-full h-full object-cover">
                     </div>
                     <h3 class="product-name font-bold text-sm text-white mb-1">Swirly Set</h3>
                 </div>
@@ -160,8 +153,7 @@
                     <button onclick="addToCart('Elderwood Set', 185)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
-
-            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="420">
+                        <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="420">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
@@ -238,7 +230,129 @@
                     <h3 class="product-name font-bold text-sm text-white mb-1">Candy Set</h3>
                 </div>
                 <div>
-                         let btn = document.getElementById('tg-btn');
+                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
+                        <span class="product-price text-sm md:text-lg font-black text-blue-400">225 ₴</span>
+                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Candy Set', 225)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="515">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
+                        <img src="https://i.postimg.cc/5yFL0PMR/Sweet-Set.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="product-name font-bold text-sm text-white mb-1">Sweet Set</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
+                        <span class="product-price text-sm md:text-lg font-black text-blue-400">515 ₴</span>
+                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Sweet Set', 515)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+        <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-gray-950 border border-blue-900/60 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <h3 class="text-lg font-black text-white flex items-center gap-2">🛒 Ваш кошик</h3>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white font-bold text-lg">&times;</button>
+            </div>
+            
+            <div id="cart-items-container" class="max-h-60 overflow-y-auto space-y-2 pr-1"></div>
+
+            <div class="border-t border-gray-800 pt-3 flex justify-between items-center">
+                <div>
+                    <p class="text-xs text-gray-400">Усього товарів: <span id="modal-cart-count" class="text-white font-bold">0</span></p>
+                    <p class="text-lg font-black text-blue-400">Сума: <span id="modal-cart-total">0</span> ₴</p>
+                </div>
+                <button onclick="clearCart()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-xl text-xs font-bold transition">Очистити</button>
+            </div>
+
+            <div class="pt-2">
+                <a id="modal-tg-btn" href="#" onclick="openTelegram(event)" class="w-full block bg-green-600 hover:bg-green-500 text-white text-center font-bold py-3 rounded-xl transition pointer-events-none opacity-50">Замовити в Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-gray-950/95 border-t border-blue-900/40 p-4 shadow-2xl backdrop-blur-md z-40">
+        <div class="max-w-4xl mx-auto flex justify-between items-center gap-3">
+            <div>
+                <p class="text-xs text-gray-400">Обрано товарів: <span id="cart-count" class="text-white font-bold">0</span></p>
+                <p class="text-md font-black">Сума: <span id="cart-total" class="text-blue-400">0</span> ₴</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="toggleCartModal()" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition">Переглянути кошик</button>
+                <a id="tg-btn" href="#" onclick="openTelegram(event)" class="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-xl font-bold text-xs text-center transition pointer-events-none opacity-50">Замовити</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let activeCategory = 'knife';
+        let allCards = [];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            let grid = document.getElementById('product-grid');
+            allCards = Array.from(grid.getElementsByClassName('product-card'));
+            switchCategory('knife');
+        });
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            let modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function updateCartUI() {
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-total').innerText = total;
+            document.getElementById('header-cart-count').innerText = cart.length;
+            document.getElementById('modal-cart-count').innerText = cart.length;
+            document.getElementById('modal-cart-total').innerText = total;
+
+            let container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-xs text-gray-500 text-center py-4">Кошик порожній</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    container.innerHTML += `
+                        <div class="flex justify-between items-center bg-gray-900 border border-gray-800 p-2.5 rounded-xl">
+                            <div>
+                                <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                                <p class="text-xs text-blue-400 font-bold">${item.price} ₴</p>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 text-xs font-bold px-2 py-1 bg-red-950/40 rounded-lg border border-red-900/40 transition">Видалити</button>
+                        </div>
+                    `;
+                });
+            }
+            
+            let btn = document.getElementById('tg-btn');
             let modalBtn = document.getElementById('modal-tg-btn');
             
             if (cart.length === 0) {
@@ -292,4 +406,4 @@
         }
     </script>
 </body>
-                </html>
+</html>
