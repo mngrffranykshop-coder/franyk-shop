@@ -238,4 +238,65 @@
                     <h3 class="product-name font-bold text-sm text-white mb-1">Candy Set</h3>
                 </div>
                 <div>
+                                let btn = document.getElementById('tg-btn');
+            let modalBtn = document.getElementById('modal-tg-btn');
+            
+            if (cart.length === 0) {
+                btn.classList.add('pointer-events-none', 'opacity-50');
+                modalBtn.classList.add('pointer-events-none', 'opacity-50');
+            } else {
+                btn.classList.remove('pointer-events-none', 'opacity-50');
+                modalBtn.classList.remove('pointer-events-none', 'opacity-50');
+            }
+        }
+
+        function openTelegram(e) {
+            e.preventDefault();
+            if (cart.length === 0) return;
+            let text = "Привіт! Хочу купити товари з ФРАНИК ШОП:\n\n";
+            cart.forEach((item, index) => {
+                text += `${index + 1}. ${item.name} — ${item.price} ₴\n`;
+            });
+            text += `\nЗагальна сума: ${cart.reduce((sum, item) => sum + item.price, 0)} ₴`;
+            window.open(`https://t.me/ffranyk?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function switchCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.className = b.id === 'btn-' + cat ? 
+                    'category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition' : 
+                    'category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition';
+            });
+            filterProducts();
+        }
+
+        function filterProducts() {
+            let search = document.getElementById('search-input').value.toLowerCase();
+            let sort = document.getElementById('sort-select').value;
+            let grid = document.getElementById('product-grid');
+
+            let filtered = allCards.filter(card => {
+                let matchCat = card.getAttribute('data-category') === activeCategory;
+                let matchName = card.querySelector('.product-name').innerText.toLowerCase().includes(search);
+                return matchCat && matchName;
+            });
+
+            if (sort !== 'default') {
+                filtered.sort((a, b) => {
+                    let pA = parseFloat(a.getAttribute('data-price'));
+                    let pB = parseFloat(b.getAttribute('data-price'));
+                    return sort === 'asc' ? pA - pB : pB - pA;
+                });
+            }
+
+            grid.innerHTML = '';
+            filtered.forEach(c => {
+                c.style.display = 'flex';
+                grid.appendChild(c);
+            });
+        }
+    </script>
+</body>
+                </html>
              
