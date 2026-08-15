@@ -17,7 +17,13 @@
     <header class="border-b border-blue-900/40 bg-gray-950/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">ФРАНИК ШОП</h1>
-            <a href="https://t.me/ffranyk" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs md:text-sm font-bold px-4 py-2 rounded-xl transition duration-300 neon-btn">Telegram</a>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleCartModal()" class="relative flex items-center gap-2 bg-gray-900 border border-blue-900/50 hover:border-blue-500 text-white text-xs md:text-sm font-bold px-4 py-2 rounded-xl transition duration-300">
+                    🛒 Кошик
+                    <span id="header-cart-count" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded-full font-black">0</span>
+                </button>
+                <a href="https://t.me/ffranyk" target="_blank" class="hidden sm:flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs md:text-sm font-bold px-4 py-2 rounded-xl transition duration-300 neon-btn">Telegram</a>
+            </div>
         </div>
     </header>
 
@@ -50,7 +56,7 @@
         <!-- КАТАЛОГ ТОВАРІВ -->
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
             
-            <!-- ТОВАР 1 -->
+            <!-- НОЖІ (knife) -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife" data-price="500">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -68,43 +74,6 @@
                 </div>
             </div>
 
-            <!-- ТОВАР 2 -->
-            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" data-price="2300">
-                <div>
-                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
-                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Godly</span>
-                        <img src="https://i.postimg.cc/X75rVm0m/Raygun.webp" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="product-name font-bold text-sm text-white mb-1">Raygun</h3>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
-                        <span class="product-price text-sm md:text-lg font-black text-blue-400">2300 ₴</span>
-                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
-                    </div>
-                    <button onclick="addToCart('Raygun', 2300)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
-                </div>
-            </div>
-
-            <!-- ТОВАР 3 -->
-            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="900">
-                <div>
-                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
-                        <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
-                        <img src="https://i.postimg.cc/CKcHV5y8/Bloom-Set.webp" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="product-name font-bold text-sm text-white mb-1">Flora Set</h3>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
-                        <span class="product-price text-sm md:text-lg font-black text-blue-400">900 ₴</span>
-                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
-                    </div>
-                    <button onclick="addToCart('Flora Set', 900)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
-                </div>
-            </div>
-
-            <!-- ТОВАР 4 -->
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="knife" data-price="450">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -122,7 +91,42 @@
                 </div>
             </div>
 
-            <!-- СЕТИ -->
+            <!-- ПІСТОЛЕТИ (gun) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="gun" data-price="2300">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Godly</span>
+                        <img src="https://i.postimg.cc/X75rVm0m/Raygun.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="product-name font-bold text-sm text-white mb-1">Raygun</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
+                        <span class="product-price text-sm md:text-lg font-black text-blue-400">2300 ₴</span>
+                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Raygun', 2300)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
+            <!-- СЕТИ (set) -->
+            <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="900">
+                <div>
+                    <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
+                        <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
+                        <img src="https://i.postimg.cc/CKcHV5y8/Bloom-Set.webp" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="product-name font-bold text-sm text-white mb-1">Flora Set</h3>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
+                        <span class="product-price text-sm md:text-lg font-black text-blue-400">900 ₴</span>
+                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
+                    </div>
+                    <button onclick="addToCart('Flora Set', 900)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                </div>
+            </div>
+
             <div class="product-card bg-gray-900/80 border border-gray-800/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition duration-300" data-category="set" data-price="175">
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
@@ -234,8 +238,4 @@
                     <h3 class="product-name font-bold text-sm text-white mb-1">Candy Set</h3>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between pt-2 mb-3 border-t border-gray-800 gap-1">
-                        <span class="product-price text-sm md:text-lg font-black text-blue-400">225 ₴</span>
-                        <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
-                    </div>
-                    <button onclick="addToCart('Candy Set', 225)" class="w-full bg-blue-60
+             
