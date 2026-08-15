@@ -525,5 +525,18 @@
             });
         }
     </script>
+    <!-- Кнопка нагору -->
+<button id="backToTop" class="fixed bottom-24 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50">
+    ▲
+</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) btn.classList.remove('opacity-0');
+        else btn.classList.add('opacity-0');
+    });
+    btn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+</script>
 </body>
 </html>
