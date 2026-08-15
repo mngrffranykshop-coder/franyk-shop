@@ -30,10 +30,10 @@
         <!-- ПАНЕЛЬ ПОШУКУ ТА СОРТУВАННЯ -->
         <div class="flex flex-col sm:flex-row gap-3">
             <div class="relative flex-grow">
-                <input type="text" id="search-input" oninput="applyFilters()" placeholder="Пошук гармати чи ножа..." class="w-full bg-gray-900 border border-gray-800 text-white text-xs md:text-sm rounded-xl px-4 py-3 pl-10 focus:outline-none focus:border-blue-500 transition">
+                <input type="text" id="search-input" oninput="filterProducts()" placeholder="Пошук гармати чи ножа..." class="w-full bg-gray-900 border border-gray-800 text-white text-xs md:text-sm rounded-xl px-4 py-3 pl-10 focus:outline-none focus:border-blue-500 transition">
                 <svg class="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <select id="sort-select" onchange="applyFilters()" class="bg-gray-900 border border-gray-800 text-gray-300 text-xs md:text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition cursor-pointer">
+            <select id="sort-select" onchange="filterProducts()" class="bg-gray-900 border border-gray-800 text-gray-300 text-xs md:text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition cursor-pointer">
                 <option value="default">Сортування: за замовчуванням</option>
                 <option value="asc">Спочатку дешевші</option>
                 <option value="desc">Спочатку дорожчі</option>
@@ -42,9 +42,9 @@
 
         <!-- КНОПКИ ФІЛЬТРІВ -->
         <div class="flex justify-center flex-wrap gap-2">
-            <button onclick="setCategory('knife')" id="btn-knife" class="category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition">🔪 Ножі</button>
-            <button onclick="setCategory('gun')" id="btn-gun" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">🔫 Пістолети</button>
-            <button onclick="setCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">📦 Сети</button>
+            <button onclick="switchCategory('knife')" id="btn-knife" class="category-btn bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold transition">🔪 Ножі</button>
+            <button onclick="switchCategory('gun')" id="btn-gun" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">🔫 Пістолети</button>
+            <button onclick="switchCategory('set')" id="btn-set" class="category-btn bg-gray-900 border border-gray-800 text-gray-300 px-5 py-2 rounded-xl text-xs font-bold transition">📦 Сети</button>
         </div>
 
         <!-- КАТАЛОГ ТОВАРІВ -->
@@ -64,7 +64,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">500 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Corrupt', 500)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">2300 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Raygun', 2300)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">900 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Flora Set', 900)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">450 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Heartwand', 450)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -127,7 +127,7 @@
                 <div>
                     <div class="bg-blue-950/40 border border-blue-900/30 aspect-square w-full rounded-xl mb-3 overflow-hidden flex items-center justify-center relative">
                         <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">Set</span>
-                        <img src="https://i.postimg.cc/QNFzMGdV/7cc9e1edb0b1a9728dc5530fabdcf517Swirly-Set.png" class="w-full h-full object-cover">
+                        <img src="https://i.postimg.cc/XNrPvSY5/Elderwood-Set.webp" class="w-full h-full object-cover">
                     </div>
                     <h3 class="product-name font-bold text-sm text-white mb-1">Swirly Set</h3>
                 </div>
@@ -136,7 +136,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">175 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Swirly Set', 175)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -153,7 +153,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">185 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Elderwood Set', 185)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -170,7 +170,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">420 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Australis Set', 420)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -187,7 +187,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">185 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Ice Set', 185)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">120 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Hallow Set', 120)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -221,7 +221,7 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">200 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
+                    <button onclick="addToCart('Spectre Set', 200)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
                 </div>
             </div>
 
@@ -238,5 +238,4 @@
                         <span class="product-price text-sm md:text-lg font-black text-blue-400">225 ₴</span>
                         <span class="text-[9px] bg-blue-950 text-blue-300 border border-blue-800/50 px-1.5 py-0.5 rounded-md font-bold">В наявності</span>
                     </div>
-                    <button onclick="addItemToCart(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-xl text-xs font-bold transition">У кошик</button>
-             
+                    <button onclick="addToCart('Candy Set', 225)" class="w-full bg-blue-60
