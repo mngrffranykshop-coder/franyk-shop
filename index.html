@@ -550,15 +550,27 @@
     btn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
 </script>
             <script>
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.product-card').forEach(card => {
-                let position = card.getBoundingClientRect().top;
-                if (position < window.innerHeight - 50) {
-                    card.classList.add('reveal', 'active');
-                }
-            });
+            window.addEventListener('scroll', () => {
+        document.querySelectorAll('.product-card').forEach(card => {
+            let position = card.getBoundingClientRect().top;
+            if (position < window.innerHeight - 50) {
+                card.classList.add('active');
+            }
         });
-        window.dispatchEvent(new Event('scroll'));
-    </script>
+    });
+
+    // Автоматично робимо активними всі картки, які видно на екрані при завантаженні
+    window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.product-card').forEach(card => {
+            let position = card.getBoundingClientRect().top;
+            if (position < window.innerHeight) {
+                card.classList.add('active');
+            }
+        });
+    });
+
+    window.dispatchEvent(new Event('scroll'));
+</script>
+
 </body>
 </html>
