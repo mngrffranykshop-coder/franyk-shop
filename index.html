@@ -7,14 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
             .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1.2s ease-out;
-    }
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+    visibility: hidden; /* Ховаємо спочатку */
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible; /* Показуємо */
+}
         
         .neon-glow { box-shadow: 0 0 25px rgba(59, 130, 246, 0.25); }
         .neon-btn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
@@ -542,35 +544,27 @@
 </button>
 
 <script>
+    // 1. Логіка кнопки "Нагору"
     const btn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) btn.classList.remove('opacity-0');
         else btn.classList.add('opacity-0');
     });
     btn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-</script>
-            <script>
-            window.addEventListener('scroll', () => {
+
+    // 2. Логіка анімації (об'єднана)
+    function checkCards() {
         document.querySelectorAll('.product-card').forEach(card => {
             let position = card.getBoundingClientRect().top;
             if (position < window.innerHeight - 50) {
                 card.classList.add('active');
             }
         });
-    });
-
-    // Автоматично робимо активними всі картки, які видно на екрані при завантаженні
-    window.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.product-card').forEach(card => {
-            let position = card.getBoundingClientRect().top;
-            if (position < window.innerHeight) {
-                card.classList.add('active');
-            }
-        });
-    });
-
-    window.dispatchEvent(new Event('scroll'));
+    }
+    
+    window.addEventListener('scroll', checkCards);
+    window.addEventListener('DOMContentLoaded', checkCards);
+    checkCards(); // Викликаємо одразу при завантаженні
 </script>
-
 </body>
 </html>
